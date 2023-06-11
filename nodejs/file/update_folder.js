@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
  * @param {String} target_folder 需要被更新的文件夹
  * @param {String} updated_folder 更新的内容
  */
-function updateFolder(src_folder, target_folder, updated_folder) {
+export function updateFolder(src_folder, target_folder, updated_folder) {
     if (!fs.existsSync(updated_folder))
         fs.mkdirSync(updated_folder);
     else
