@@ -14,14 +14,15 @@ export class Handler {
         this._params = params;
     }
 
-    public static create<T, Args extends any[]>(func: (...args: Args) => T, caller?: any, ...params: Partial<Args>): Handler {
+    public static create<T, Args extends any[]>(
+        func: (...args: Args) => T,
+        caller?: any,
+        ...params: Partial<Args>
+    ): Handler {
         return new Handler(func, caller, params);
     }
 
-    public async call(): Promise<void> {
-        return new Promise(async (resolve) => {
-            await this._func.apply(this._caller, ...this._params);
-            resolve();
-        });
+    public call(): void {
+        this._func.apply(this._caller, ...this._params);
     }
 }
